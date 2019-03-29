@@ -30,7 +30,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Moment'
                 example:
-                  registtimestamp: 2019-03-29 16:00:51
+                  registerTimestamp: 2019-03-29 16:00:51
                   accelerationmeter-x: 10.5
                   accelerationmeter-y: 10.5
                   accelerationmeter-z: 10.5
@@ -50,7 +50,7 @@ components:
       description: 運動量
       type: object
       properties:
-        regstTimestamp:
+        regsterTimestamp:
           description: 登録タイムスタンプ
           type: string
           example:
