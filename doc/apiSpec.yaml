@@ -4,12 +4,100 @@ info:
   description: API description in Markdown.
   version: 1.0.0
 servers:
-  - url: 'https://api.example.com'
+  - url: 'https://apiss.example.com'
 paths:
-  /users:
+  /motion/{deviceId}:
     get:
-      summary: Returns a list of users.
-      description: Optional extended description in Markdown.
+      summary: 全モーションデータを取得
+      description: 運動量に関わる全てのモーションデータ返却します
+      tags:
+        - front
+      parameters:
+        - name: deviceId
+          in: path
+          description: デバイスID
+          required: true
+          schema:
+            type: string
       responses:
         '200':
-          description: OK
+          description: モーションデータ一覧
+          content:
+            application/json:
+              schema:
+                description: モーションデータの全量を返却する。返却パラメータは全てdouble型
+                type: array
+                items:
+                  $ref: '#/components/schemas/Moment'
+                example:
+                  registtimestamp: 2019-03-29 16:00:51
+                  accelerationmeter-x: 10.5
+                  accelerationmeter-y: 10.5
+                  accelerationmeter-z: 10.5
+                  gyroscope-x: -10.5
+                  gyroscope-y: -7.5
+                  gyroscope-z: 2.5
+                  magnetometer-x: -0.6
+                  magnetometer-y: 0.0
+                  geomagnetism-z: 1.0
+        '404':
+          description: デバイスIDに紐づくデータが存在しない
+        '500':
+          description: サーバーエラー
+components:
+  schemas:
+    Moment:
+      description: 運動量
+      type: object
+      properties:
+        regstTimestamp:
+          description: 登録タイムスタンプ
+          type: string
+          example:
+            2019-03-29 16:00:51
+        accelerationmeter-x:
+          description: X軸加速度
+          type: number
+          format: double
+          example:
+            10.5
+        accelerationmeter-y:
+          description: Y軸加速度
+          type: number
+          format: double
+          example:
+            10.5
+        accelerationmeter-z:
+          description: Z軸加速度
+          type: number
+          format: double
+        gyroscope-x:
+          description: X軸角加速度
+          type: number
+          format: double
+        gyroscope-y:
+          description: Y軸角加速度
+          type: number
+          format: double
+        gyroscope-z:
+          description: Z軸角加速度
+          type: number
+          format: double
+        magnetometer-x:
+          description: X軸地磁気強度
+          type: number
+          format: double
+        magnetometer-y:
+          description: Y軸地磁気強度
+          type: number
+          format: double
+        magnetometer-z:
+          description: Z軸地磁気強度
+          type: number
+          format: double
+      example:
+        acc
+
+
+
+
