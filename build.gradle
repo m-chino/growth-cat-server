@@ -4,10 +4,16 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+idea.module.inheritOutputDirs = true
 
 group = 'jp.gxp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+// doma2のコンパイルにはsqlファイルが必要なのでコンパイル前にコンパイルファイル出力ディレクトリにsqlファイルをコピーする
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
 
 repositories {
     mavenCentral()
@@ -19,4 +25,8 @@ dependencies {
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // https://mvnrepository.com/artifact/org.seasar.doma/doma
+    compile group: 'org.seasar.doma', name: 'doma', version: '2.24.0'
+    // https://mvnrepository.com/artifact/org.seasar.doma.boot/doma-spring-boot-starter
+    compile group: 'org.seasar.doma.boot', name: 'doma-spring-boot-starter', version: '1.1.1'
 }
