@@ -31,15 +31,15 @@ paths:
                   $ref: '#/components/schemas/Moment'
                 example:
                   registerTimestamp: 2019-03-29 16:00:51
-                  accelerationmeter-x: 10.5
-                  accelerationmeter-y: 10.5
-                  accelerationmeter-z: 10.5
-                  gyroscope-x: -10.5
-                  gyroscope-y: -7.5
-                  gyroscope-z: 2.5
-                  magnetometer-x: -0.6
-                  magnetometer-y: 0.0
-                  geomagnetism-z: 1.0
+                  accelerationmeter_x: 10.5
+                  accelerationmeter_y: 10.5
+                  accelerationmeter_z: 10.5
+                  gyroscope_x: -10.5
+                  gyroscope_y: -7.5
+                  gyroscope_z: 2.5
+                  magnetometer_x: -0.6
+                  magnetometer_y: 0.0
+                  geomagnetism_z: 1.0
         '404':
           description: デバイスIDに紐づくデータが存在しない
         '500':
@@ -78,48 +78,48 @@ components:
       description: 運動量
       type: object
       properties:
-        regsterTimestamp:
+        registerTimestamp:
           description: 登録タイムスタンプ
           type: string
           example:
             2019-03-29 16:00:51
-        accelerationmeter-x:
+        accelerationmeter_x:
           description: X軸加速度
           type: number
           format: double
           example:
             10.5
-        accelerationmeter-y:
+        accelerationmeter_y:
           description: Y軸加速度
           type: number
           format: double
           example:
             10.5
-        accelerationmeter-z:
+        accelerationmeter_z:
           description: Z軸加速度
           type: number
           format: double
-        gyroscope-x:
+        gyroscope_x:
           description: X軸角加速度
           type: number
           format: double
-        gyroscope-y:
+        gyroscope_y:
           description: Y軸角加速度
           type: number
           format: double
-        gyroscope-z:
+        gyroscope_z:
           description: Z軸角加速度
           type: number
           format: double
-        magnetometer-x:
+        magnetometer_x:
           description: X軸地磁気強度
           type: number
           format: double
-        magnetometer-y:
+        magnetometer_y:
           description: Y軸地磁気強度
           type: number
           format: double
-        magnetometer-z:
+        magnetometer_z:
           description: Z軸地磁気強度
           type: number
           format: double
