@@ -10,9 +10,6 @@ import org.seasar.doma.Table;
 @Table(name = "motion")
 public class Motion {
 
-    @Id
-    private String deviceId;
-
     private Date registerTimestamp;
 
     private Double accelerationmeter_x;
@@ -32,14 +29,6 @@ public class Motion {
     private Double magnetometer_y;
 
     private Double magnetometer_z;
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
 
     public Date getRegisterTimestamp() {
         return registerTimestamp;
