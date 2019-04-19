@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,7 +31,7 @@ public class MomentDisplayApiController {
         return moitonList;
     }
 
-    @RequestMapping(value = "/motion/{deviceId}")
+    @RequestMapping(value = "/motion/{deviceId}", method = RequestMethod.POST)
     public void registMotionData(@PathVariable String deviceId, @RequestBody Motion motion) {
 
         motionDao.insertMotion(deviceId, motion);
