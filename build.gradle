@@ -23,10 +23,17 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'mysql:mysql-connector-java'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // https://mvnrepository.com/artifact/org.seasar.doma/doma
     compile group: 'org.seasar.doma', name: 'doma', version: '2.24.0'
     // https://mvnrepository.com/artifact/org.seasar.doma.boot/doma-spring-boot-starter
     compile group: 'org.seasar.doma.boot', name: 'doma-spring-boot-starter', version: '1.1.1'
+}
+
+
+bootJar {
+    baseName = 'growth-cat-servicer'
+    version =  '0.0.1'
 }

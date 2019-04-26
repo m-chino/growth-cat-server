@@ -3,7 +3,6 @@ package jp.gxp.growthcatserver.front.entity;
 import java.util.Date;
 
 import org.seasar.doma.Entity;
-import org.seasar.doma.Id;
 import org.seasar.doma.Table;
 
 @Entity

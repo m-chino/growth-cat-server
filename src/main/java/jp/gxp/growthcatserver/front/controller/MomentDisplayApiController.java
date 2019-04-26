@@ -35,7 +35,5 @@ public class MomentDisplayApiController {
     public void registMotionData(@PathVariable String deviceId, @RequestBody Motion motion) {
 
         motionDao.insertMotion(deviceId, motion);
-        return;
-
     }
 }
