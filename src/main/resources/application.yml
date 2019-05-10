@@ -5,6 +5,9 @@ doma:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/motion?useSSL=false
+    url: jdbc:mysql://35.221.118.253:3306/motion?useSSL=false
     username: root
     password: root
+
+server:
+  port: 80

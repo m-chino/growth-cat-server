@@ -40,6 +40,6 @@ dependencies {
 
 
 bootJar {
-    baseName = 'growth-cat-servicer'
+    baseName = 'growth-cat-server'
     version =  '0.0.1'
 }
