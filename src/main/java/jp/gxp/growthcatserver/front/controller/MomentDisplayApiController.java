@@ -6,6 +6,7 @@ import jp.gxp.growthcatserver.front.dao.MotionDao;
 import jp.gxp.growthcatserver.front.entity.Motion;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ public class MomentDisplayApiController {
         this.motionDao = motionDao;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/motion/{deviceId}")
     public List<Motion> fetchMotionDataByDeviceId(@PathVariable String deviceId) {
 
@@ -31,9 +33,10 @@ public class MomentDisplayApiController {
         return moitonList;
     }
 
+
+    @CrossOrigin
     @RequestMapping(value = "/motion/{deviceId}", method = RequestMethod.POST)
     public void registMotionData(@PathVariable String deviceId, @RequestBody Motion motion) {
-
         motionDao.insertMotion(deviceId, motion);
     }
 }
