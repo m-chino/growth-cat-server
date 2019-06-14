@@ -21,6 +21,8 @@ public class MotionData {
 
     private double magnetometer_z;
 
+    private double luxometer;
+
     public String getRegisterTimestamp() {
         return registerTimestamp;
     }
@@ -99,5 +101,13 @@ public class MotionData {
 
     public void setMagnetometer_z(double magnetometer_z) {
         this.magnetometer_z = magnetometer_z;
+    }
+
+    public double getLuxometer() {
+        return luxometer;
+    }
+
+    public void setLuxometer(double luxometer) {
+        this.luxometer = luxometer;
     }
 }

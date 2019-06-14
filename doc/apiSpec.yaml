@@ -40,6 +40,7 @@ paths:
                   magnetometer_x: -0.6
                   magnetometer_y: 0.0
                   geomagnetism_z: 1.0
+                  luxometer: 123.4
         '404':
           description: デバイスIDに紐づくデータが存在しない
         '500':
@@ -121,5 +122,9 @@ components:
           format: double
         magnetometer_z:
           description: Z軸地磁気強度
+          type: number
+          format: double
+        luxometer:
+          description: 光度
           type: number
           format: double

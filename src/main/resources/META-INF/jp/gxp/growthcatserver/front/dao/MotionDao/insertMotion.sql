@@ -11,7 +11,8 @@ INSERT INTO
     gyroscope_z,
     magnetometer_x,
     magnetometer_y,
-    magnetometer_z
+    magnetometer_z,
+    luxometer
   )
 VALUES
   (
@@ -25,5 +26,6 @@ VALUES
    /* motion.gyroscope_z */6,
    /* motion.magnetometer_x */7,
    /* motion.magnetometer_y */8,
-   /* motion.magnetometer_z */9
+   /* motion.magnetometer_z */9,
+   /* motion.luxometer */10
   )

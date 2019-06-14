@@ -29,6 +29,8 @@ public class Motion {
 
     private Double magnetometer_z;
 
+    private Double luxometer;
+
     public Date getRegisterTimestamp() {
         return registerTimestamp;
     }
@@ -107,5 +109,13 @@ public class Motion {
 
     public void setMagnetometer_z(Double magnetometer_z) {
         this.magnetometer_z = magnetometer_z;
+    }
+
+    public Double getLuxometer() {
+        return luxometer;
+    }
+
+    public void setLuxometer(Double luxometer) {
+        this.luxometer = luxometer;
     }
 }
