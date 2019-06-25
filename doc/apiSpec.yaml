@@ -39,7 +39,7 @@ paths:
                   gyroscope_z: 2.5
                   magnetometer_x: -0.6
                   magnetometer_y: 0.0
-                  geomagnetism_z: 1.0
+                  magnetometer_z: 1.0
                   luxometer: 123.4
         '404':
           description: デバイスIDに紐づくデータが存在しない
