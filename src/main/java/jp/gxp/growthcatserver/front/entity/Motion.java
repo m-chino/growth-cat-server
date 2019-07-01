@@ -2,11 +2,6 @@ package jp.gxp.growthcatserver.front.entity;
 
 import java.util.Date;
 
-import org.seasar.doma.Entity;
-import org.seasar.doma.Table;
-
-@Entity
-@Table(name = "motion")
 public class Motion {
 
     private Date registerTimestamp;

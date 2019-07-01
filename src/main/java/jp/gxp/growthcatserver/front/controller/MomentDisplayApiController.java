@@ -39,4 +39,10 @@ public class MomentDisplayApiController {
     public void registMotionData(@PathVariable String deviceId, @RequestBody Motion motion) {
         motionDao.insertMotion(deviceId, motion);
     }
+
+    @CrossOrigin
+    @GetMapping(value = "/motion/es/{deviceId}")
+    public List<Motion> esFetchMotion(@PathVariable String deviceId) {
+        return motionDao.esFetchMotion(deviceId);
+    }
 }
