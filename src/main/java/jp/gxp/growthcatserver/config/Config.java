@@ -2,26 +2,31 @@ package jp.gxp.growthcatserver.config;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@Configurable
+@Configuration
 @ComponentScan("jp.gxp.growthcatserver")
 public class Config {
-    @Value("${post}")
-    private String post;
-    @Value("${port}")
+
+    @Value("${elasticsearch.host}")
+    private String host;
+
+    @Value("${elasticsearch.port}")
     private Integer port;
-    @Value("${protocol}")
+
+    @Value("${elasticsearch.http.protocol}")
     private String protocol;
 
     @Bean
-    public RestHighLevelClient returnRestHighLevelClient(){
-        return new RestHighLevelClient(RestClient.builder(new HttpHost(post,port,protocol)));
+    public RestHighLevelClient returnRestHighLevelClient() {
+        System.out.println("elasticsearch host : " + host);
+        System.out.println("elasticsearch port : " + port);
+        System.out.println("elasticsearch protocol : " + protocol);
+        return new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, protocol)));
     }
 
 }

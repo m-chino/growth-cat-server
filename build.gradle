@@ -1,5 +1,3 @@
-import java.awt.Image
-
 plugins {
     id 'org.springframework.boot' version '2.1.3.RELEASE'
     id 'java'
@@ -10,16 +8,21 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 idea.module.inheritOutputDirs = true
 
-// docker imageの設定
-jib.to.image = 'growth-cat-server'
-
 group = 'jp.gxp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-// doma2のコンパイルにはsqlファイルが必要なのでコンパイル前にコンパイルファイル出力ディレクトリにsqlファイルをコピーする
-processResources.destinationDir = compileJava.destinationDir
-compileJava.dependsOn processResources
+// docker imageの設定
+// gradlew jib とすることでアプリのビルドからdockerイメージの作成、GCPのcontainer registryへのpushまでやってくれる
+// gcpのcontainer registryに上げるためにはgcloudコマンドをインストールした後以下のコマンドを叩く必要がある。
+// gcloud auth configure-docker
+// 詳しくはここ : https://cloud.google.com/container-registry/docs/advanced-authentication#docker_credential_helper
+jib {
+    to {
+        image = 'asia.gcr.io/acquired-talent-237406/growth-cat-server'
+        credHelper = 'gcr'
+    }
+}
 
 repositories {
     mavenCentral()
@@ -41,6 +44,40 @@ dependencies {
 
 }
 
+task containerRun(type: Exec) {
+    commandLine 'docker'
+    args = [
+            'run',
+            '-d',
+            '--rm',
+            '--name', 'growth-cat-server',
+            '-e', 'ELASTICSEARCH_HOST=localhost',
+            '-e', 'ELASTICSEARCH_PORT=9200',
+            '-e', 'ELASTICSEARCH_HTTP_PROTOCOL=http',
+            '-p', '8080:8080',
+            'asia.gcr.io/acquired-talent-237406/growth-cat-server'
+    ]
+}
+
+task localRun(dependsOn: [jibDockerBuild, containerRun]) {
+    doLast {
+        logger.info 'growth-cat-server container started'
+    }
+}
+
+// localRun実行時のタスクの依存関係を設定
+containerRun.mustRunAfter jibDockerBuild
+
+task containerStop(type: Exec) {
+    commandLine 'docker'
+    args = [
+            'stop',
+            'growth-cat-server'
+    ]
+    doLast {
+        logger.info 'docker container stopped'
+    }
+}
 
 bootJar {
     baseName = 'growth-cat-server'

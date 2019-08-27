@@ -1,3 +1,7 @@
-post: "localhost"
-port: 9200
-protocol: "http"
+elasticsearch:
+  host: "localdomain"
+  port: 19200
+  http:
+    protocol: "http"
+server:
+  port: 80

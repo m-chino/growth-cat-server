@@ -2,10 +2,8 @@ package jp.gxp.growthcatserver.front.controller;
 
 import java.util.Arrays;
 import java.util.List;
-
-import jp.gxp.growthcatserver.front.repository.MotionRepository;
 import jp.gxp.growthcatserver.front.entity.Motion;
-
+import jp.gxp.growthcatserver.front.repository.MotionRepository;
 import org.elasticsearch.action.search.SearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
