@@ -1,6 +1,5 @@
 elasticsearch:
-  host: "localdomain"
-  port: 19200
+  port: 9200
   http:
     protocol: "http"
 server:

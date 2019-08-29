@@ -1,6 +1,5 @@
 elasticsearch:
-  host: "gcp-domain"
-  port: 29200
+  port: 9200
   http:
     protocol: "http"
 server:
