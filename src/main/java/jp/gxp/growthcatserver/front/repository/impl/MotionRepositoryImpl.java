@@ -12,6 +12,8 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.FieldSortBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -46,6 +48,8 @@ public class MotionRepositoryImpl implements MotionRepository {
         // 検索条件
         SearchRequest searchRequest = new SearchRequest();
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.sort(new FieldSortBuilder("registerTimestamp").order(SortOrder.DESC));
+        searchSourceBuilder.size(10000);
         searchSourceBuilder.query(QueryBuilders.termQuery("deviceId", deviceId));
         searchRequest.source(searchSourceBuilder);
 

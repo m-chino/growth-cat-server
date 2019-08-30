@@ -44,7 +44,7 @@ public class MomentDisplayApiController {
     @RequestMapping(value = "/motion/es/{deviceId}", method = RequestMethod.GET)
     public Object[] esSearch(@PathVariable String deviceId) {
         SearchResponse response = motionRepository.search(deviceId);
-
+//        TODO: 登録日時昇順にする (t.okada)
         return Arrays.stream(response.getHits().getHits()).map(hit -> hit.getSourceAsMap()).toArray();
     }
 
