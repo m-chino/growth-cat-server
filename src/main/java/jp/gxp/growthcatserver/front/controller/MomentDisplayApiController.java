@@ -1,6 +1,7 @@
 package jp.gxp.growthcatserver.front.controller;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import jp.gxp.growthcatserver.front.entity.Motion;
 import jp.gxp.growthcatserver.front.repository.MotionRepository;
@@ -44,8 +45,15 @@ public class MomentDisplayApiController {
     @RequestMapping(value = "/motion/es/{deviceId}", method = RequestMethod.GET)
     public Object[] esSearch(@PathVariable String deviceId) {
         SearchResponse response = motionRepository.search(deviceId);
-//        TODO: 登録日時昇順にする (t.okada)
-        return Arrays.stream(response.getHits().getHits()).map(hit -> hit.getSourceAsMap()).toArray();
+
+        // ESのレスポンスを登録タイムスタンプで昇順ソートして返却
+        return Arrays.stream(response.getHits().getHits()).map(hit -> hit.getSourceAsMap())
+            .sorted(
+                Comparator.comparing(stringObjectMap -> {
+                    var strTime = (String) stringObjectMap.get("registerTimestamp");
+                    return strTime;
+                })
+            ).toArray();
     }
 
     @CrossOrigin

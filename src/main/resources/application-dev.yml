@@ -1,4 +1,5 @@
 elasticsearch:
+  host: 34.84.68.0
   port: 9200
   http:
     protocol: "http"
